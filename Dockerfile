@@ -10,7 +10,7 @@ COPY ./config.yaml /verdaccio/conf
 RUN echo $HTPASSWD > /verdaccio/conf/htpasswd
 
 # TODO: remove this later, only testing it
-RUN grep galmis /verdaccio/conf/htpasswd
+RUN ls
 RUN echo $HTPASSWD
 
 USER verdaccio
