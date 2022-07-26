@@ -4,7 +4,7 @@ USER root
 
 ENV NODE_ENV=production
 
-RUN yarn && yarn add verdaccio-memory
+RUN npm i && npm install verdaccio-aws-s3-storage
 
 COPY ./config.yaml /verdaccio/conf
 
