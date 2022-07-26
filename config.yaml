@@ -20,10 +20,10 @@ packages:
   '@*/*':
     access: $authenticated
     publish: $authenticated
+    unpublish: $authenticated
     proxy: npmjs
   '**':
     proxy: npmjs
     access: $authenticated
     publish: $authenticated
-logs:
-  - {type: stdout, format: pretty, level: trace}
+    unpublish: $authenticated
