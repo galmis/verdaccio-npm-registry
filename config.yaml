@@ -26,4 +26,4 @@ packages:
     access: $authenticated
     publish: $authenticated
 logs:
-  - {type: stdout, format: pretty, level: http}
+  - {type: stdout, format: pretty, level: trace}
