@@ -6,12 +6,21 @@ Based on inspiration of [https://github.com/autotelic/verdaccio-heroku-docker](h
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-Create a project and follow the blog steps, deploy and release the app.
+To build a docker image and release it, run the following:
 
 ```bash
 heroku container:login
-heroku container:push web
-heroku container:release web
+```
+
+```bash
+source env.sh
+```
+
+> NOTE: your env.sh should contain HTPASSWD=YOUR_HTPASSWD environment variable. To generate one use https://hostingcanada.org/htpasswd-generator
+
+```bash
+heroku container:push web --arg HTPASSWD="$HTPASSWD" -a <YOUR HEROKU APP NAME>
+heroku container:release web -a <YOUR HEROKU APP NAME>
 ```
 
 ## Demo
