@@ -4,10 +4,13 @@ USER root
 
 ENV NODE_ENV=production
 
+RUN ls
+RUN echo "$HTPASSWD" > htpasswd
+
 RUN yarn && yarn add verdaccio-aws-s3-storage
 
 COPY ./config.yaml /verdaccio/conf
-RUN printenv HTPASSWD > /verdaccio/conf/htpasswd
+COPY ./htpasswd /verdaccio/conf
 
 USER verdaccio
 # Important step, $PORT is provided by heroku while verdaccio uses $VERDACCIO_PORT, we need to override it
