@@ -1,7 +1,7 @@
 {
-  "name": "verdaccio-heroku",
-  "description": "A private npm registry with Heroku",
-  "repository": "https://github.com/juanpicado/verdaccio-heroku-example",
-  "keywords": ["verdaccio", "docker", "npm"],
+  "name": "verdaccio-npm-registry",
+  "description": "A private npm registry with Heroku, AWS S3 and htpasswd file generation with user registration disabled",
+  "repository": "https://github.com/galmis/verdaccio-npm-registry",
+  "keywords": ["verdaccio", "docker", "npm", "AWS S3"],
   "stack": "container"
 }
