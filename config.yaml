@@ -8,7 +8,7 @@ store:
 auth:
   htpasswd:
     file: ./htpasswd
-    max_users: 1
+    max_users: -1
     algorithm: bcrypt
     rounds: 10
 web:
