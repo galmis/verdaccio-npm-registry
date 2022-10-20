@@ -7,7 +7,7 @@ store:
     region: AWS_REGION
 auth:
   htpasswd:
-    file: ./htpasswd
+    file: /etc/secrets/htpasswd
     max_users: -1
     algorithm: bcrypt
     rounds: 10
