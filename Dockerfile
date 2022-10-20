@@ -13,6 +13,9 @@ COPY ./config.yaml /verdaccio/conf
 RUN --mount=type=secret,id=htpasswd,dst=/etc/secrets/htpasswd cat > /verdaccio/conf/htpasswd
 RUN cat /verdaccio/conf/htpasswd
 
+RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env cat > /etc/secrets/.env
+RUN cat /etc/secrets/.env
+
 # --mount=type=secret,id=htpasswd,dst=/etc/secrets/htpasswd cat /etc/secrets/htpasswd
 # COPY /etc/secrets/htpasswd /verdaccio/conf/htpasswd
 
