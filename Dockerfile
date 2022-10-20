@@ -6,10 +6,12 @@ USER root
 
 ENV NODE_ENV=production
 
-RUN --mount=type=secret,id=htpasswd,dst=/etc/secrets/htpasswd cat > /verdaccio/conf/htpasswd
 RUN yarn && yarn add verdaccio-aws-s3-storage
 
 COPY ./config.yaml /verdaccio/conf
+
+RUN --mount=type=secret,id=htpasswd,dst=/etc/secrets/htpasswd cat > /verdaccio/conf/htpasswd
+RUN cat /verdaccio/conf/htpasswd
 
 # --mount=type=secret,id=htpasswd,dst=/etc/secrets/htpasswd cat /etc/secrets/htpasswd
 # COPY /etc/secrets/htpasswd /verdaccio/conf/htpasswd
