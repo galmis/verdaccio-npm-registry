@@ -10,6 +10,8 @@ RUN yarn && yarn add verdaccio-aws-s3-storage
 
 COPY ./config.yaml /verdaccio/conf
 
+RUN --mount=type=secret,id=htpasswd,dst=/verdaccio/conf/htpasswd cat /etc/secrets/htpasswd
+
 # --mount=type=secret,id=htpasswd,dst=/etc/secrets/htpasswd cat /etc/secrets/htpasswd
 # COPY /etc/secrets/htpasswd /verdaccio/conf/htpasswd
 
