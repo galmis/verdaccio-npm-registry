@@ -6,9 +6,10 @@ USER root
 
 ENV NODE_ENV=production
 
-RUN --mount=type=secret,id=htpasswd,dst=/etc/secrets/htpasswd cat /verdaccio/conf/htpasswd && yarn && yarn add verdaccio-aws-s3-storage
+RUN --mount=type=secret,id=htpasswd,dst=/etc/secrets/htpasswd cat /etc/secrets/htpasswd && yarn && yarn add verdaccio-aws-s3-storage
 
 COPY ./config.yaml /verdaccio/conf
+COPY /etc/secrets/htpasswd /verdaccio/conf/htpasswd
 
 # ARG leaves a trace in docker image, so not recommended for secrets
 # ARG HTPASSWD
