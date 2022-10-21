@@ -1,5 +1,8 @@
 storage: ./storage
 store: 
+  # only used for testing, replace with s3 config for production
+  # memory:
+  #  limit: 1000
   aws-s3-storage:
     bucket: AWS_FILES_BUCKET
     accessKeyId: AWS_ACCESS_KEY_ID

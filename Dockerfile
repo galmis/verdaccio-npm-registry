@@ -10,22 +10,7 @@ RUN yarn && yarn add verdaccio-aws-s3-storage
 
 COPY ./config.yaml /verdaccio/conf
 
-RUN --mount=type=secret,id=htpasswd,dst=/etc/secrets/htpasswd cat > /verdaccio/conf/htpasswd
-RUN cat /verdaccio/conf/htpasswd
-
-RUN --mount=type=secret,id=htpasswd,dst=/etc/secrets/htpasswd cat /etc/secrets/htpasswd
-
-RUN --mount=type=secret,id=_env,dst=/etc/secrets/.env cat > /verdaccio/conf/.env
-RUN cat /verdaccio/conf/.env
-
-RUN --mount=type=secret,id=htpasswd,dst=/verdaccio/conf/htpasswd cat /verdaccio/conf/htpasswd
-
-# --mount=type=secret,id=htpasswd,dst=/etc/secrets/htpasswd cat /etc/secrets/htpasswd
-# COPY /etc/secrets/htpasswd /verdaccio/conf/htpasswd
-
-# ARG leaves a trace in docker image, so not recommended for secrets
-# ARG HTPASSWD
-# RUN printf "%s" "$HTPASSWD" > /verdaccio/conf/htpasswd
+RUN --mount=type=secret,id=htpasswd,dst=/etc/secrets/htpasswd cat /etc/secrets/htpasswd > /verdaccio/conf/htpasswd
 
 USER verdaccio
 
