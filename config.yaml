@@ -19,6 +19,8 @@ web:
 uplinks:
   npmjs:
     url: https://registry.npmjs.org/
+    # In case I want to save storage space in AWS, I should disable cache https://verdaccio.org/docs/uplinks/
+    # cache: false
 packages:
   '@*/*':
     access: $authenticated
