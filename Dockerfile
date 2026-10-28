@@ -1,18 +1,15 @@
 # syntax = docker/dockerfile:1.2
 
-FROM verdaccio/verdaccio:5
+FROM verdaccio/verdaccio:6
 
 USER root
 
 ENV NODE_ENV=production
 
-RUN yarn && yarn add verdaccio-aws-s3-storage
+RUN npm install --global verdaccio-aws-s3-storage
 
 COPY ./config.yaml /verdaccio/conf
 
 RUN --mount=type=secret,id=htpasswd,dst=/etc/secrets/htpasswd cat /etc/secrets/htpasswd > /verdaccio/conf/htpasswd
 
 USER verdaccio
-
-# Important step, $PORT is provided by hosting providers (e.g. heroku, render.com) while verdaccio uses $VERDACCIO_PORT, we need to override it
-CMD node -r ./.pnp.js $VERDACCIO_APPDIR/bin/verdaccio --config /verdaccio/conf/config.yaml --listen $VERDACCIO_PROTOCOL://0.0.0.0:$PORT
