@@ -1,12 +1,12 @@
 # syntax = docker/dockerfile:1.2
 
-FROM verdaccio/verdaccio:6
+FROM verdaccio/verdaccio:7
 
 USER root
 
 ENV NODE_ENV=production
 
-RUN npm install --global verdaccio-aws-s3-storage
+RUN npm install --global verdaccio-aws-s3-storage@12.1.3
 
 COPY ./config.yaml /verdaccio/conf
 
