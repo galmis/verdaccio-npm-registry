@@ -18,10 +18,14 @@ internal_port = 4873
 processes = ["app"]
 protocol = "tcp"
 script_checks = []
+auto_stop_machines = "suspend" # or "stop", which is 2-3s slower, but less constrained https://docs.fly.io/reference/suspend-resume#requirements (e.g. doesn't have max 2 GB memory recommendation)
+auto_start_machines = true
+min_machines_running = 0       # allow scaling to zero
+
 [services.concurrency]
-type = "requests"
-soft_limit = 150
-hard_limit = 200
+hard_limit = 25
+soft_limit = 20
+type = "connections"
 
 [[services.ports]]
 force_https = true
